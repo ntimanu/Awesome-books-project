@@ -74,16 +74,15 @@ In order to run this project you need:
 
 ### Setup
 
-Clone this repository to your desired folder:<br>
+Clone this repository to your desired folder or download the Zip folder:
 
-<!--
-Example commands:
-
-```sh
-  cd my-folder
-  git clone https://github.com/Othniel2471/awesome-books.git
 ```
---->
+git clone git@github.com:aradradev/add-awesome-Book.git
+```
+
+- Navigate to the location of the folder in your machine:
+
+**``you@your-Pc-name:~$ cd add-awesome-Book``**
 
 ### Install
  To Install this project, follow the steps below:
