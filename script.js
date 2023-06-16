@@ -19,7 +19,6 @@ class Books {
     localStorage.setItem('books', JSON.stringify(this.books));
   }
 
-  // REMOVE BOOK FUCTION
   removeBooks(book) {
     booksContainer.innerHTML = '';
     this.books = this.books.filter((item) => item.id !== book.id);
@@ -27,24 +26,27 @@ class Books {
     this.storedData();
   }
 
-  // CREATEBOOK FUCTION
+  addBook(title, author) {
+    this.books = this.books.concat({ title, author });
+    return this.books;
+  }
+
   createBook() {
-    this.books.forEach((book) => {
+    this.books.forEach((id) => {
       const bookElement = document.createElement('div');
       const bookInfo = document.createElement('p');
       const removeBtn = document.createElement('button');
       bookElement.classList.add('book-element');
-      bookInfo.innerHTML = `"${book.title}" by ${book.author}`;
+      bookInfo.innerHTML = `"${id.title}" by ${id.author}`;
       removeBtn.innerHTML = 'remove';
       removeBtn.classList.add('remove-btn');
-      removeBtn.addEventListener('click', () => this.removeBooks(book));
+      removeBtn.addEventListener('click', () => this.removeBooks(id));
       bookElement.appendChild(bookInfo);
       bookElement.appendChild(removeBtn);
       booksContainer.appendChild(bookElement);
     });
   }
 
-  // SUBMIT FUCTION
   submit() {
     this.books.push({
       title: title.value,
@@ -58,7 +60,6 @@ class Books {
     resetForm();
   }
 
-  // DATA FROM LOCALSTORAGE
   getBooks() {
     const savedItem = localStorage.getItem('books');
     if (savedItem) {
@@ -72,17 +73,3 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   newBook.submit();
 });
-
-// TIME
-function updateTime() {
-  const currentDate = new Date();
-  const options = {
-    month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric',
-  };
-  let formattedDate = currentDate.toLocaleString('en-US', options);
-  formattedDate = formattedDate.replace('At', ',');
-
-  document.getElementById('date').innerHTML = formattedDate;
-  setTimeout(updateTime, 6000);
-}
-updateTime();
