@@ -4,10 +4,12 @@
   list-style: none;
   color: black;
 }
+
 body {
   background-color: #025464;
   color: #f8f1f1;
 }
+
 .header {
   display: flex;
   align-items: center;
